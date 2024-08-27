@@ -1,7 +1,8 @@
 export { PageNotFound } from "./ui/not-found/PageNotFound";
 export { ProductGrid } from "./products/products-grid/ProductGrid";
 export { ProductGridItem } from "./products/products-grid/ProductGridItem";
-export { ProductSliderShow } from "./product/slides-show/ProductSliderShow";
+export { ProductMobileSlideShow } from "./product/slides-show/ProductMobileSlideShow";
+export { ProductSlideShow } from "./product/slides-show/ProductSlideShow";
 export { QuantitySelector } from "./product/quantity-selector/QuantitySelector";
 export { Sidebar } from "./ui/sidebar/Sidebar";
 export { SizeSelector } from "./product/size-selector/SizeSelector";

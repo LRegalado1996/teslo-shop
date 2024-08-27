@@ -21,11 +21,14 @@ interface Props {
   className?: string;
 }
 
-export const ProductSliderShow = ({ images, title, className }: Props) => {
+export const ProductSlideShow = ({ images, title, className }: Props) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperObject>();
 
   return (
     <div className={className}>
+      {/* Mobile slideshow */}
+
+      {/* Desktop Slideshow */}
       <Swiper
         style={
           {
