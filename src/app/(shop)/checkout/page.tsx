@@ -78,7 +78,7 @@ export default function CheckoutPage() {
               <p className="mb-3">
                 {/* Disclaimer   */}
                 <span className="text-xs">
-                  Al hacer clic en "Colocar orden aceptas nuestros"{" "}
+                  Al hacer clic en &quot;Colocar orden aceptas nuestros&quot;{" "}
                   <a className="underline">términos y condiciones</a> y{" "}
                   <a className="underline">política de privacidad</a>
                 </span>
