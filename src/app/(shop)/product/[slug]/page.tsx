@@ -11,10 +11,31 @@ import {
   StockLabel,
 } from "@/components";
 import { titleFont } from "@/config/fonts";
+import { Metadata, ResolvingMetadata } from "next";
 
 interface Props {
   params: {
     slug: string;
+  };
+}
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const slug = params.slug;
+
+  const product = await getProductBySlug(slug);
+
+  return {
+    title: product?.title ?? "Producto no encontado",
+    description: product?.description ?? "",
+
+    openGraph: {
+      title: product?.title ?? "Producto no encontado",
+      description: product?.description ?? "",
+      images: [`/products/${product?.images[1]}`],
+    },
   };
 }
 
