@@ -23,7 +23,17 @@ export const StockLabel = ({ slug }: Props) => {
     setIsLoanding(false);
   };
 
-  if (isLoanding) return "cargando...";
-
-  return <h1 className={`${titleFont.className} antialiased text-md`}>Stock: {stock}</h1>;
+  return (
+    <>
+      {isLoanding ? (
+        <div
+          className={`${titleFont.className} w-full antialiased text-md bg-gray-200 animate-pulse`}
+        >
+          &nbsp;
+        </div>
+      ) : (
+        <span className={`${titleFont.className} antialiased text-md`}>Stock: {stock}</span>
+      )}
+    </>
+  );
 };
