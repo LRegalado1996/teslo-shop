@@ -1,31 +1,38 @@
-import { redirect } from "next/navigation";
-
 import { getPaginatedProductsWithImages } from "@/actions";
 import { Pagination, ProductGrid, Title } from "@/components";
+import { Category } from "@/interfaces";
 
 interface Props {
+  params: {
+    gender: Category;
+  };
   searchParams: {
     page?: string;
     take?: string;
   };
 }
 
-export default async function ShopPage({ searchParams }: Props) {
+const titlesLabels: Record<Category, string> = {
+  kid: "para niños",
+  men: "para hombres",
+  women: "para mujeres",
+  unisex: "para todos",
+};
+
+export default async function CategoryPage({ params, searchParams }: Props) {
+  const { gender } = params;
+
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
   const take = searchParams.take ? parseInt(searchParams.take) : 12;
-
   const { products, totalPages } = await getPaginatedProductsWithImages({
     page,
     take,
+    gender,
   });
-
-  if (products.length === 0) {
-    redirect("/");
-  }
 
   return (
     <>
-      <Title title="Tienda" subtitle="Todos los productos" />
+      <Title title={`Articulos ${titlesLabels[gender]}`} />
 
       <ProductGrid products={products} />
 
