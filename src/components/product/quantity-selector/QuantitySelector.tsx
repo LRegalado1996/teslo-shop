@@ -1,3 +1,5 @@
+"use client";
+
 import { IoAddCircleOutline, IoRemoveCircleOutline } from "react-icons/io5";
 
 interface Props {
