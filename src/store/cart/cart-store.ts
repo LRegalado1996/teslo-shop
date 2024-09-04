@@ -5,7 +5,15 @@ import type { CartProduct } from "@/interfaces";
 
 interface State {
   cart: CartProduct[];
+
   getTotalNumber: () => number;
+  getSummaryInformation: () => {
+    subTotal: number;
+    tax: number;
+    total: number;
+    itemsInCart: number;
+  };
+
   addProductTocart: (product: CartProduct) => void;
   updateProductQuantity: (product: CartProduct, quantity: number) => void;
   removeProduct: (product: CartProduct) => void;
@@ -20,6 +28,16 @@ export const useCartStore = create<State>()(
       getTotalNumber: () => {
         const { cart } = get();
         return cart.reduce((total, item) => total + item.quantity, 0);
+      },
+
+      getSummaryInformation: () => {
+        const { cart } = get();
+        const subTotal = cart.reduce((subTotal, item) => subTotal + item.price * item.quantity, 0);
+        const tax = subTotal * 0.15;
+        const total = subTotal + tax;
+        const itemsInCart = cart.reduce((total, item) => total + item.quantity, 0);
+
+        return { subTotal, tax, total, itemsInCart };
       },
 
       addProductTocart: (product: CartProduct) => {
