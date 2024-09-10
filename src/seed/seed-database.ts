@@ -6,8 +6,11 @@ async function main() {
   await prisma.productImage.deleteMany();
   await prisma.product.deleteMany();
   await prisma.category.deleteMany();
+  await prisma.user.deleteMany();
 
-  const { categories, products } = initialData;
+  const { categories, products, users } = initialData;
+
+  await prisma.user.createMany({ data: users });
 
   //2. Agregar categorias
   const categoriesData = categories.map((name) => ({ name }));
